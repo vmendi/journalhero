@@ -1,4 +1,5 @@
 asgiref==3.9.1
 Django==5.2.5
 django-browser-reload==1.18.0
+django-htmx==1.23.2
 sqlparse==0.5.3
