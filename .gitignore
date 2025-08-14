@@ -1,0 +1,47 @@
+__pycache__/
+db.sqlite3
+*.pyc 
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# IDE/Editor specific files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Media files (if not intended for version control)
+media/
+
+# Static files (if generated on deployment)
+staticfiles/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Python egg-info
+*.egg-info/
+
+# Build artifacts
+build/
+dist/
+
+# Local settings
+local_settings.py
+*.local.py
+
+# Environment variables file
+.env 
+
+data/learneo-cur*
