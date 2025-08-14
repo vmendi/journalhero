@@ -3,7 +3,9 @@ description: JournalHero PRD to always kept in mind when consulting the LLM assi
 alwaysApply: true
 ---
 
-# Journal Hero is an AI-driven Journaling app created to solve these pain points:
+# Project description:
+
+Journal Hero is an AI-driven Journaling app created to solve these pain points:
 
 - Writers block. Having a prompt eliminates the "blank page" problem that stops many users from journaling. Instead of presenting an empty screen, the app uses AI to provide personalized, thought-provoking prompts based on the user's previous entries, goals, and mood.
 
@@ -22,7 +24,7 @@ alwaysApply: true
 - Setup Screen Step 1: Define Your Goals. What brings you to Journal Hero?
 - Setup Screen Step 2: Choose your AI’s initial persona.
 
-# Journal Entry Loop
+## Journal Entry Loop
 - Diary Entry screen
     - Prompt at the top.
     - Text input field where the user writes their journal entry.
@@ -31,10 +33,15 @@ alwaysApply: true
   - Show modal dialog with title: **"Which thought feels most important right now?"** Below this title, the AI generates 2-3 distinct prompts based on topics detected in the entry.
   - The user chooses one of the options and we go back to writing another diary entry, but this time with the newly selected prompt.
 
-# "Finish Entry" & The Analysis Dialog
+## "Finish Entry" & The Analysis Dialog
 - Once the user taps "Finish Entry," the entry is saved, and the AI performs its analysis, presenting the results in a modal dialog. This is the "reward" for journaling.
 - **Title:** An AI-generated summary title (e.g., "Reflections on a Difficult Conversation").
 - **Synopsis**. It uses the user's chosen AI persona. It starts with something validating like, "It takes a lot of courage to reflect on this..." and connect the current entry to past themes or stated goals.
 - **Insight:** A single, powerful sentence or two that presents the "blind spot" or a new perspective. Framed constructively, like: "It seems like feelings of 'imposter syndrome' often appear when you're about to take on a new challenge at work."
 - **Quote:** A relevant quote that connects to the entry's theme.
 - **Mood & Topics:** Automatically generated tags with associated emojis.
+
+# Technical Architecture
+- Django backend.
+- Tailwind CSS + DaisyUI. Use DaisyUI when possible without resorting to Tailwind CSS, but don't hesitate to use the lower level classes from Tailwind CSS when needed.
+- Our frontend is rendered from the backend. We are not a SPA, but we emulate the dynamic feel by using HTMX. We avoid single full page refreshes.
