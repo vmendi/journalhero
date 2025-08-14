@@ -1,23 +1,26 @@
+{% load static tailwind_tags %}
 {% load django_htmx %}
 <!DOCTYPE html>
-<html lang="en" class="">
-	<head>
-    	<title>Journal Hero</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html lang="en" data-theme="cupcake">
+<head>
+	<title>Journal Hero</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-		{% htmx_script %}
+	{% tailwind_preload_css %}
+	{% tailwind_css %}
+	{% htmx_script %}
 
-		<!-- Defer so that htmx is loaded before htmx-ext-sse -->
-		<script src="https://unpkg.com/htmx-ext-sse@2.2.3" defer></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	</head>
+	<!-- Defer so that htmx is loaded before htmx-ext-sse -->
+	<script src="https://unpkg.com/htmx-ext-sse@2.2.3" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
-	<body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}' class="">
-        <div>
-            {% block content %}
-            {% endblock %}
-        </div>
-    </body>
+<body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
+	<div>
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
 </html>

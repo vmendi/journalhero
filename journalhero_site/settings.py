@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "tailwind",
+    "tailwindtheme_app",
     "django_browser_reload",
     "django_htmx",
     'journalhero_app',
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+TAILWIND_APP_NAME = "tailwindtheme_app"
 
 MIDDLEWARE = [
     "django_htmx.middleware.HtmxMiddleware",
