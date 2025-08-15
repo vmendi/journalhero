@@ -3,6 +3,8 @@
   themes: light --default, dark --prefersdark, cupcake, garden;
 }
 
+/* In case you need the theme generator: https://daisyui.com/theme-generator */
+
 /* Custom utility for a lighter base background */
 @utility bg-base-50 {
   background-color: var(--color-base-50, var(--color-base-100));

@@ -2,9 +2,115 @@
 {% load static %}
 
 {% block content %}
-  <main>
-    <div class="flex items-center gap-4">
-      <img src="{% static 'journalhero_app/journalherologo.png' %}" alt="Journal Hero" class="h-24 w-auto"/>
+  <header class="w-full border-b border-gray-200 backdrop-blur bg-base-50">
+    <div class="container mx-auto px-6 py-4">
+      <div class="navbar p-0">
+        <div class="navbar-start">
+          <a href="/" class="flex items-center gap-2">
+            <img src="{% static 'journalhero_app/journalherologo.png' %}" alt="Journal Hero Logo" class="h-18 w-auto" />
+          </a>
+        </div>
+        <div class="navbar-center hidden md:flex">
+          <ul class="flex items-center gap-4">
+            <li><a href="#features" class="btn btn-sm rounded-full font-bold bg-base-300 hover:bg-success">Features</a></li>
+            <li><a href="#reviews" class="btn btn-sm rounded-full font-bold bg-base-300 hover:bg-success">Reviews</a></li>
+            <li><a href="#pricing" class="btn btn-sm rounded-full font-bold bg-base-300 hover:bg-success">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end gap-2">
+          <button class="btn btn-ghost hidden sm:inline-flex">Login</button>
+          <button class="btn btn-success">Start Your Free Trial</button>
+        </div>
+      </div>
     </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="w-full">
+      <div class="container mx-auto px-6 py-14 md:py-20">
+        <h1 class="text-center font-extrabold tracking-tight text-4xl md:text-6xl leading-tight">
+          Your Journey Starts with <span class="text-success">Journal Hero</span>
+        </h1>
+        <p class="mt-6 max-w-3xl mx-auto text-center text-base md:text-lg text-base-content/70">
+          Transform your thoughts into powerful insights. Journal Hero helps you build a
+          consistent journaling habit that improves your mental clarity, productivity, and
+          personal growth.
+        </p>
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <a href="#pricing" class="btn btn-success">Start Your Free Trial</a>
+          <a href="#demo" class="btn btn-outline btn-success">Watch Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="w-full">
+      <div class="container mx-auto px-6 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- Feature 1 -->
+          <div class="text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-success/10 text-success">
+              <!-- placeholder icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                <circle cx="12" cy="12" r="9"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg">Beat Writer's Block</h3>
+            <p class="mt-2 text-sm text-base-content/70">
+              AI-powered prompts eliminate the "blank page" problem. Get personalized,
+              thought-provoking questions based on your previous entries, goals, and mood.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-success/10 text-success">
+              <!-- placeholder icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                <rect x="5" y="5" width="14" height="14" rx="3"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg">Gain Mental Clarity</h3>
+            <p class="mt-2 text-sm text-base-content/70">
+              AI analyzes your entries to identify productivity patterns, emotional triggers,
+              and behavioral insights. Improve both your
+              <span class="font-bold text-success">mental health</span> and <span class="font-bold text-success">daily effectiveness</span>.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-success/10 text-success">
+              <!-- placeholder icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 5v6l5 3-1 1-6-3V7h2Z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg">Build Your Daily Ritual</h3>
+            <p class="mt-2 text-sm text-base-content/70">
+              Pick a prompt, chase a streak, and unlock wins. Consistency becomes fun and surprisingly easy. 
+              Journaling is a rewarding daily habit, not a chore.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-success/10 text-success">
+              <!-- placeholder icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4Zm0 4l-5 3v3c0 3.5 2.2 6.8 5 7.9 2.8-1.1 5-4.4 5-7.9V9l-5-3Z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-lg">End-to-End Privacy</h3>
+            <p class="mt-2 text-sm text-base-content/70">
+              Your thoughts are completely private with end-to-end encryption. Only you have the
+              master key; we can't read your entries even if we wanted to.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
 {% endblock %}
