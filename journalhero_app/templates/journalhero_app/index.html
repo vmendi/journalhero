@@ -1,9 +1,10 @@
 {% extends "journalhero_app/base.html" %}
+{% load static %}
 
 {% block content %}
   <main>
-    <h1>Journal Hero</h1>
-    <h1 class="text-4xl font-bold text-blue-600">Hello!</h1>
-    <button class="btn btn-primary">Button</button>
+    <div class="flex items-center gap-4">
+      <img src="{% static 'journalhero_app/journalherologo.png' %}" alt="Journal Hero" class="h-24 w-auto"/>
+    </div>
   </main>
 {% endblock %}

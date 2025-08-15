@@ -3,6 +3,18 @@
   themes: light --default, dark --prefersdark, cupcake, garden;
 }
 
+/* Custom utility for a lighter base background */
+@utility bg-base-50 {
+  background-color: var(--color-base-50, var(--color-base-100));
+}
+
+/* Provide the token for the current theme in use */
+[data-theme="cupcake"] {
+  /* Slightly lighter than cupcake's base-100 */
+  --color-base-50: oklch(100% 0.0 255.0);
+}
+
+
 /**
   * A catch-all path to Django template files, JavaScript, and Python files
   * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
