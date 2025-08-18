@@ -1,0 +1,79 @@
+<div class="flex items-start gap-4">
+  <div>
+    <h3 class="text-xl font-bold">Define Your Goals. What brings you to Journal Hero?</h3>
+  </div>
+</div>
+
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="reduce-stress">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Reduce Stress & Anxiety</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="relationships">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Improve My Relationships</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="productivity">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Boost My Productivity</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="self-understanding">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Understand Myself Better</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="gratitude">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Cultivate Gratitude</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="chronicle-life">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Chronicle my Daily Life</span>
+  </label>
+  <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="other">
+    <input type="checkbox" class="checkbox checkbox-success" />
+    <span>Something Else</span>
+  </label>
+</div>
+
+<div class="mt-6 flex items-center justify-between">
+  <button id="goals-back" class="btn">Back</button>
+  <button id="goals-continue" class="btn btn-success btn-wide invisible">Continue</button>
+  
+</div>
+
+<script>
+  (function() {
+    const modal = document.getElementById('onboarding-modal');
+    if (!modal) return;
+    const goalsPanel = modal.querySelector('#step-2');
+    if (!goalsPanel) return;
+    const goalOptions = goalsPanel.querySelectorAll('.goal-option');
+    const continueBtn = goalsPanel.querySelector('#goals-continue');
+
+    const updateContinueVisibility = () => {
+      const anySelected = Array.from(goalOptions).some((opt) => opt.classList.contains('ring-2'));
+      if (continueBtn) {
+        continueBtn.classList.toggle('invisible', !anySelected);
+      }
+    };
+
+    goalOptions.forEach((option) => {
+      const input = option.querySelector('input[type="checkbox"]');
+      option.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() !== 'input') {
+          input.checked = !input.checked;
+        }
+        option.classList.toggle('border-success', input.checked);
+        option.classList.toggle('bg-success/5', input.checked);
+        option.classList.toggle('ring-2', input.checked);
+        option.classList.toggle('ring-success', input.checked);
+        option.classList.toggle('ring-offset-1', input.checked);
+        updateContinueVisibility();
+      });
+    });
+
+    updateContinueVisibility();
+  })();
+</script>
+
+

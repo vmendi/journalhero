@@ -119,9 +119,16 @@
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
-      <!-- Step 1: Persona selection -->
-      {% include "journalhero_app/components/persona_selector.html" %}
-      <!-- Future steps will be included/conditionally rendered here -->
+      <div id="onboarding-content" class="min-h-[850px]">
+        <!-- Step 1: Persona selection -->
+        <div id="step-1">
+          {% include "journalhero_app/components/persona_selector.html" %}
+        </div>
+        <!-- Step 2: Goals selection -->
+        <div id="step-2" class="hidden">
+          {% include "journalhero_app/components/step_goals.html" %}
+        </div>
+      </div>
     </div>
     <form method="dialog" class="modal-backdrop bg-base-200/50 backdrop-blur">
       <button>close</button>
@@ -133,14 +140,38 @@
       const modal = document.getElementById('onboarding-modal');
       const triggers = document.querySelectorAll('[data-trigger="start-trial"]');
 
+      const showStep = (stepNumber) => {
+        const step1 = modal.querySelector('#step-1');
+        const step2 = modal.querySelector('#step-2');
+        if (!step1 || !step2) return;
+        if (stepNumber === 1) {
+          step1.classList.remove('hidden');
+          step2.classList.add('hidden');
+        } else if (stepNumber === 2) {
+          step1.classList.add('hidden');
+          step2.classList.remove('hidden');
+        }
+      };
+
       triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           if (modal && typeof modal.showModal === 'function') {
             modal.showModal();
           }
+          showStep(1);
         });
       });
+
+      const personaContinueBtn = document.getElementById('onboarding-continue');
+      if (personaContinueBtn) {
+        personaContinueBtn.addEventListener('click', () => showStep(2));
+      }
+
+      const goalsBackBtn = document.getElementById('goals-back');
+      if (goalsBackBtn) {
+        goalsBackBtn.addEventListener('click', () => showStep(1));
+      }
     })();
   </script>
 
