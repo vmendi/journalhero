@@ -132,8 +132,8 @@
         {% include "journalhero_app/components/persona_option.html" with persona_key="marcus" img_src="journalhero_app/characters/new-marcus00-small.png" img_alt="Marcus Aurelius" name="Marcus Aurelius" subtitle="The Stoic Emperor" description="Drawing from the wisdom of the Roman emperor and philosopher, Marcus Aurelius acts as your guide to inner resilience. His approach is rooted in Stoicism: focusing on what you can control, acting with virtue, and viewing obstacles as opportunities. His prompts are designed to build mental fortitude and turn reflection into purposeful action." best_for="Build resilience, gain perspective on their problems, and translate their thoughts into disciplined, real-world actions." %}
       </div>
 
-      <div class="mt-6 flex items-center justify-end">
-        <button id="onboarding-continue" class="btn btn-success hidden">Continue</button>
+      <div class="mt-6 flex items-center justify-center">
+        <button id="onboarding-continue" class="btn btn-success btn-wide invisible">Continue</button>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop bg-base-200/50 backdrop-blur">
@@ -159,9 +159,9 @@
 
       personaOptions.forEach((option) => {
         option.addEventListener('click', () => {
-          personaOptions.forEach((o) => o.classList.remove('border-success', 'bg-success/5'));
-          option.classList.add('border-success', 'bg-success/5');
-          if (continueBtn) continueBtn.classList.remove('hidden');
+          personaOptions.forEach((o) => o.classList.remove('border-success', 'bg-success/5', 'ring-2', 'ring-success', 'ring-offset-1'));
+          option.classList.add('border-success', 'bg-success/5', 'ring-2', 'ring-success', 'ring-offset-1');
+          if (continueBtn) continueBtn.classList.remove('invisible');
         });
       });
     })();

@@ -15,6 +15,14 @@
 	<!-- Defer so that htmx is loaded before htmx-ext-sse -->
 	<script src="https://unpkg.com/htmx-ext-sse@2.2.3" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- Reserve scrollbar space so opening modals won’t cause layout shift, plus a fallback for older browsers -->
+	<style>
+		html { scrollbar-gutter: stable both-edges; }
+		@supports not (scrollbar-gutter: stable) {
+			html { overflow-y: scroll; }
+		}
+	</style>
 </head>
 
 <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
