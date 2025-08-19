@@ -116,10 +116,13 @@
   <!-- Onboarding Modal (multi-step container) -->
   <dialog id="onboarding-modal" class="modal">
     <div class="modal-box max-w-3xl relative">
-      <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      </form>
-      <div id="onboarding-content" class="min-h-[850px]">
+      <div class="flex items-center justify-end gap-2 absolute top-4 right-4">
+        <a id="back" href="#" class="link link-info text-sm hidden">Back</a>
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost">✕</button>
+        </form>
+      </div>
+      <div id="onboarding-content">
         <!-- Step 1: Persona selection -->
         <div id="step-1">
           {% include "journalhero_app/components/persona_selector.html" %}
@@ -144,12 +147,15 @@
         const step1 = modal.querySelector('#step-1');
         const step2 = modal.querySelector('#step-2');
         if (!step1 || !step2) return;
+        const back = modal.querySelector('#back');
         if (stepNumber === 1) {
           step1.classList.remove('hidden');
           step2.classList.add('hidden');
+          if (back) back.classList.add('hidden');
         } else if (stepNumber === 2) {
           step1.classList.add('hidden');
           step2.classList.remove('hidden');
+          if (back) back.classList.remove('hidden');
         }
       };
 
@@ -168,9 +174,9 @@
         personaContinueBtn.addEventListener('click', () => showStep(2));
       }
 
-      const goalsBackBtn = document.getElementById('goals-back');
-      if (goalsBackBtn) {
-        goalsBackBtn.addEventListener('click', () => showStep(1));
+      const backBtn = document.getElementById('back');
+      if (backBtn) {
+        backBtn.addEventListener('click', (e) => { e.preventDefault(); showStep(1); });
       }
     })();
   </script>
