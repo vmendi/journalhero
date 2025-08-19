@@ -1,10 +1,13 @@
 <div class="flex items-start gap-4">
   <div>
-    <h3 class="text-xl font-bold">Define Your Goals. What brings you to Journal Hero?</h3>
+    <h3 class="text-xl font-bold">
+      <span class="text-2xl">Choose your goals</span><br>
+      <span class="text-success">How can Journal Hero help you today?</span>
+    </h3>
   </div>
 </div>
 
-<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+<div class="mt-6 flex flex-col gap-6">
   <label class="goal-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer" data-goal="reduce-stress">
     <input type="checkbox" class="checkbox checkbox-success" />
     <span>Reduce Stress & Anxiety</span>
@@ -38,7 +41,6 @@
 <div class="mt-6 flex items-center justify-between">
   <button id="goals-back" class="btn">Back</button>
   <button id="goals-continue" class="btn btn-success btn-wide invisible">Continue</button>
-  
 </div>
 
 <script>
@@ -51,25 +53,31 @@
     const continueBtn = goalsPanel.querySelector('#goals-continue');
 
     const updateContinueVisibility = () => {
-      const anySelected = Array.from(goalOptions).some((opt) => opt.classList.contains('ring-2'));
+      const anySelected = Array.from(goalOptions).some((opt) => opt.classList.contains('ring-3'));
       if (continueBtn) {
         continueBtn.classList.toggle('invisible', !anySelected);
       }
     };
 
+    const applySelectionStyles = (option, isSelected) => {
+      option.classList.toggle('border-success', isSelected);
+      option.classList.toggle('bg-success/5', isSelected);
+      option.classList.toggle('ring-3', isSelected);
+      option.classList.toggle('ring-success', isSelected);
+      option.classList.toggle('ring-offset-1', isSelected);
+    };
+
     goalOptions.forEach((option) => {
       const input = option.querySelector('input[type="checkbox"]');
-      option.addEventListener('click', (e) => {
-        if (e.target.tagName.toLowerCase() !== 'input') {
-          input.checked = !input.checked;
-        }
-        option.classList.toggle('border-success', input.checked);
-        option.classList.toggle('bg-success/5', input.checked);
-        option.classList.toggle('ring-2', input.checked);
-        option.classList.toggle('ring-success', input.checked);
-        option.classList.toggle('ring-offset-1', input.checked);
+      if (!input) return;
+
+      input.addEventListener('change', () => {
+        applySelectionStyles(option, input.checked);
         updateContinueVisibility();
       });
+
+      // Initialize styles in case of pre-checked inputs
+      applySelectionStyles(option, input.checked);
     });
 
     updateContinueVisibility();

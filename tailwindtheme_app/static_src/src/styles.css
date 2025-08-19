@@ -1,19 +1,17 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake, garden;
+  themes: light --default, dark --prefersdark, garden, emerald;
 }
 
-/* In case you need the theme generator: https://daisyui.com/theme-generator */
-
-/* Custom utility for a lighter base background */
-@utility bg-base-50 {
-  background-color: var(--color-base-50, var(--color-base-100));
+/* Just an example of how to create a daisyUI color 
+ * In case you need the theme generator: https://daisyui.com/theme-generator 
+ */
+@utility bg-base-150 {
+  background-color: var(--color-base-150, var(--color-base-100));
 }
 
-/* Provide the token for the current theme in use */
-[data-theme="cupcake"] {
-  /* Slightly lighter than cupcake's base-100 */
-  --color-base-50: oklch(100% 0.0 255.0);
+[data-theme="emerald"] {
+  --color-base-150: oklch(97% 0.006 160);
 }
 
 
