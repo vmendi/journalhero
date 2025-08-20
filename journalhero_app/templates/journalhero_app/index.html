@@ -131,6 +131,10 @@
         <div id="step-2" class="hidden">
           {% include "journalhero_app/components/step_goals.html" %}
         </div>
+        <!-- Step 3: Age range -->
+        <div id="step-3" class="hidden">
+          {% include "journalhero_app/components/step_age.html" %}
+        </div>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop bg-base-200/50 backdrop-blur">
@@ -143,20 +147,20 @@
       const modal = document.getElementById('onboarding-modal');
       const triggers = document.querySelectorAll('[data-trigger="start-trial"]');
 
+      let currentStep = 1;
       const showStep = (stepNumber) => {
         const step1 = modal.querySelector('#step-1');
         const step2 = modal.querySelector('#step-2');
-        if (!step1 || !step2) return;
+        const step3 = modal.querySelector('#step-3');
+        if (!step1 || !step2 || !step3) return;
         const back = modal.querySelector('#back');
-        if (stepNumber === 1) {
-          step1.classList.remove('hidden');
-          step2.classList.add('hidden');
-          if (back) back.classList.add('hidden');
-        } else if (stepNumber === 2) {
-          step1.classList.add('hidden');
-          step2.classList.remove('hidden');
-          if (back) back.classList.remove('hidden');
-        }
+        currentStep = Math.max(1, Math.min(3, stepNumber));
+        [step1, step2, step3].forEach((el, idx) => {
+          const stepIdx = idx + 1;
+          if (stepIdx === currentStep) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        });
+        if (back) back.classList.toggle('hidden', currentStep === 1);
       };
 
       triggers.forEach((el) => {
@@ -174,9 +178,21 @@
         personaContinueBtn.addEventListener('click', () => showStep(2));
       }
 
+      const goalsContinueBtn = document.getElementById('goals-continue');
+      if (goalsContinueBtn) {
+        goalsContinueBtn.addEventListener('click', () => showStep(3));
+      }
+
+      const ageContinueBtn = document.getElementById('age-continue');
+      if (ageContinueBtn) {
+        ageContinueBtn.addEventListener('click', () => {
+          if (modal && typeof modal.close === 'function') modal.close();
+        });
+      }
+
       const backBtn = document.getElementById('back');
       if (backBtn) {
-        backBtn.addEventListener('click', (e) => { e.preventDefault(); showStep(1); });
+        backBtn.addEventListener('click', (e) => { e.preventDefault(); showStep(currentStep - 1); });
       }
     })();
   </script>

@@ -1,0 +1,74 @@
+<div class="flex items-start gap-4">
+  <div>
+    <h3 class="text-xl font-bold">
+      <span class="text-2xl">What's your age range?</span><br>
+      <span class="text-success">This helps personalize prompts and insights</span>
+    </h3>
+  </div>
+  </div>
+
+<div class="mt-6 grid grid-cols-1 gap-3">
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="under-18" class="radio radio-success" />
+    <span>Under 18</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="18-24" class="radio radio-success" />
+    <span>18–24</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="25-34" class="radio radio-success" />
+    <span>25–34</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="35-44" class="radio radio-success" />
+    <span>35–44</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="45-54" class="radio radio-success" />
+    <span>45–54</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="55-64" class="radio radio-success" />
+    <span>55–64</span>
+  </label>
+  <label class="age-option flex items-center gap-3 p-4 rounded-xl border border-base-300 hover:border-success transition cursor-pointer">
+    <input type="radio" name="age_range" value="65-plus" class="radio radio-success" />
+    <span>65+</span>
+  </label>
+</div>
+
+<div class="mt-6 flex items-center justify-center">
+  <button id="age-continue" class="btn btn-success btn-wide invisible">Continue</button>
+</div>
+
+<script>
+  (function() {
+    const modal = document.getElementById('onboarding-modal');
+    if (!modal) return;
+    const agePanel = modal.querySelector('#step-3');
+    if (!agePanel) return;
+    const ageOptions = agePanel.querySelectorAll('.age-option');
+    const continueBtn = agePanel.querySelector('#age-continue');
+
+    const applySelectionStyles = (option, isSelected) => {
+      option.classList.toggle('border-success', isSelected);
+      option.classList.toggle('bg-success/5', isSelected);
+      option.classList.toggle('ring-3', isSelected);
+      option.classList.toggle('ring-success', isSelected);
+      option.classList.toggle('ring-offset-1', isSelected);
+    };
+
+    ageOptions.forEach((option) => {
+      const input = option.querySelector('input[type="radio"]');
+      if (!input) return;
+      input.addEventListener('change', () => {
+        ageOptions.forEach((o) => applySelectionStyles(o, false));
+        applySelectionStyles(option, input.checked);
+        if (continueBtn) continueBtn.classList.remove('invisible');
+      });
+    });
+  })();
+  </script>
+
+
