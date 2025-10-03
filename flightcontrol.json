@@ -10,6 +10,9 @@
                 "branch": "main",
                 "trigger": "push"
             },
+            "builder": {
+                "type": "ec2"
+            },
             "services": [
                 {
                     "id": "journalhero-web",
