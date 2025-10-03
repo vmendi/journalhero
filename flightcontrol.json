@@ -1,0 +1,1 @@
+{"$schema":"https://app.flightcontrol.dev/schema.json","environments":[{"id":"journalhero","name":"journalhero","region":"us-east-1","source":{"pr":false,"branch":"main","trigger":"push"},"services":[],"vpc":{"id":"vpc-0894208ce7e757c86","private":false}}]}
