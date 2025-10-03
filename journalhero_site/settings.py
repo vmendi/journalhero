@@ -26,7 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-0&c=lb)t^fh3c^0(l%c*d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS check disabled for testing - accepts all hosts
+# TODO: Re-enable this for production security!
+ALLOWED_HOSTS = ['*']
 
 # Security settings for production
 if not DEBUG:
