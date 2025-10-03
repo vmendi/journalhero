@@ -10,15 +10,15 @@
                 "branch": "main",
                 "trigger": "push"
             },
-            "builder": {
-                "type": "ec2"
-            },
             "services": [
                 {
                     "id": "journalhero-web",
                     "name": "journalhero-web",
                     "type": "fargate",
                     "buildType": "nixpacks",
+                    "ci": {
+                        "type": "ec2"
+                    },
                     "cpu": 0.25,
                     "memory": 0.5,
                     "minInstances": 1,
