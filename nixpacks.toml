@@ -2,11 +2,5 @@
 # Ensures Node.js is available for Tailwind CSS compilation
 
 [phases.setup]
-nixPkgs = ["python311", "nodejs_20"]
-
-[phases.install]
-cmds = [
-    "pip install -r requirements.txt",
-    "cd tailwindtheme_app/static_src && npm ci"
-]
+aptPkgs = ["nodejs", "npm"]
 

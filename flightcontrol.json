@@ -34,7 +34,7 @@
                             ]
                         }
                     ],
-                    "buildCommand": "python manage.py tailwind build && python manage.py collectstatic --noinput",
+                    "buildCommand": "cd tailwindtheme_app/static_src && npm ci && cd ../.. && python manage.py tailwind build && python manage.py collectstatic --noinput",
                     "startCommand": "python manage.py migrate --noinput && gunicorn journalhero_site.wsgi:application --bind 0.0.0.0:8080 --workers 1",
                     "port": 8080
                 }
