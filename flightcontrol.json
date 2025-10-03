@@ -1,1 +1,48 @@
-{"$schema":"https://app.flightcontrol.dev/schema.json","environments":[{"id":"journalhero","name":"journalhero","region":"us-east-1","source":{"pr":false,"branch":"main","trigger":"push"},"services":[],"vpc":{"id":"vpc-0894208ce7e757c86","private":false}}]}
+{
+    "$schema": "https://app.flightcontrol.dev/schema.json",
+    "environments": [
+        {
+            "id": "journalhero",
+            "name": "journalhero",
+            "region": "us-east-1",
+            "source": {
+                "pr": false,
+                "branch": "main",
+                "trigger": "push"
+            },
+            "services": [
+                {
+                    "id": "journalhero-web",
+                    "name": "journalhero-web",
+                    "type": "fargate",
+                    "buildType": "nixpacks",
+                    "cpu": 0.25,
+                    "memory": 0.5,
+                    "minInstances": 1,
+                    "maxInstances": 1,
+                    "healthCheckPath": "/",
+                    "envVariables": {
+                        "DJANGO_SETTINGS_MODULE": "journalhero_site.settings",
+                        "PYTHONUNBUFFERED": "1",
+                        "USE_SQLITE": "True"
+                    },
+                    "envVariableGroups": [
+                        {
+                            "keys": [
+                                "SECRET_KEY",
+                                "ALLOWED_HOSTS"
+                            ]
+                        }
+                    ],
+                    "buildCommand": "python manage.py tailwind build && python manage.py collectstatic --noinput",
+                    "startCommand": "python manage.py migrate --noinput && gunicorn journalhero_site.wsgi:application --bind 0.0.0.0:8080 --workers 1",
+                    "port": 8080
+                }
+            ],
+            "vpc": {
+                "id": "vpc-0894208ce7e757c86",
+                "private": false
+            }
+        }
+    ]
+}
