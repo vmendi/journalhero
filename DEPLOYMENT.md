@@ -48,6 +48,7 @@ Once you push to `main`, Flightcontrol will automatically:
 
 ### Configuration Files
 - **flightcontrol.json**: Added web service definition (using SQLite, single instance)
+- **nixpacks.toml**: Ensures Node.js is installed for Tailwind CSS compilation
 - **requirements.txt**: Added production dependencies:
   - `gunicorn`: Production WSGI server
   - `whitenoise`: Static file serving
