@@ -30,16 +30,18 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 # TODO: Re-enable this for production security!
 ALLOWED_HOSTS = ['*']
 
-# Security settings for production
+# Security settings for production (behind ALB)
 if not DEBUG:
     # Trust the X-Forwarded-Proto header from ALB to determine if request was HTTPS
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
+    # Disable SSL redirect - ALB handles HTTPS termination
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
+    # Disable HSTS until we confirm the setup works
+    # SECURE_HSTS_SECONDS = 31536000
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_PRELOAD = True
 
 
 # Application definition
